@@ -111,6 +111,7 @@ exports.readStudent = function (req, res) {
             result.forEach(element => {
                 element.tanggal_lahir_siswa = dateFormat(element.tanggal_lahir_siswa, "dd mmmm yyyy");
                 element.created_date = dateFormat(element.created_date, "dd mmmm yyyy HH:MM:ss");
+                element.updated_date = dateFormat(element.updated_date, "dd mmmm yyyy HH:MM:ss");
             })
             status_code = "200";
             messages = "Success";
