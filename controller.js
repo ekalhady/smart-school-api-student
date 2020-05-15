@@ -79,6 +79,7 @@ exports.readStudent = function (req, res) {
     if (req.body.idStudent != null || req.body.idStudent != undefined) {
         condition = " AND id_siswa = " + req.body.idStudent;
     }
+    var page = req.body.page * req.body.limit - req.body.limit;
     var sql = `SELECT 
         id_siswa,
         nama_siswa,
@@ -94,11 +95,11 @@ exports.readStudent = function (req, res) {
      FROM
         sekolah_cerdas.siswa
      WHERE 1=1  
-       `+ condition + `;`;
+       `+ condition + ` LIMIT ` + page + `,` + req.body.limit + `;`;
 
-    // console.log("+++++++++++++++++++++++++++++++++++++++++++++++++++++");
-    // console.log(sql);
-    // console.log("+++++++++++++++++++++++++++++++++++++++++++++++++++++");
+    console.log("+++++++++++++++++++++++++++++++++++++++++++++++++++++");
+    console.log(sql);
+    console.log("+++++++++++++++++++++++++++++++++++++++++++++++++++++");
 
     connection.query(sql, function (error, result, fields) {
         if (error) {
