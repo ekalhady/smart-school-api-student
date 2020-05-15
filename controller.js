@@ -97,9 +97,9 @@ exports.readStudent = function (req, res) {
      WHERE 1=1  
        `+ condition + ` LIMIT ` + page + `,` + req.body.limit + `;`;
 
-    console.log("+++++++++++++++++++++++++++++++++++++++++++++++++++++");
-    console.log(sql);
-    console.log("+++++++++++++++++++++++++++++++++++++++++++++++++++++");
+    // console.log("+++++++++++++++++++++++++++++++++++++++++++++++++++++");
+    // console.log(sql);
+    // console.log("+++++++++++++++++++++++++++++++++++++++++++++++++++++");
 
     connection.query(sql, function (error, result, fields) {
         if (error) {
