@@ -25,11 +25,12 @@ exports.successPost = function (status_code, time, messages, res) {
     res.end();
 };
 
-exports.successGet = function (status_code, time, messages, datasets, res) {
+exports.successGet = function (status_code, time, messages, total, datasets, res) {
     var data = {
         'statusCode': status_code,
         'elapsedTime': time,
         'messages': messages,
+        'total': total,
         'data': datasets
     };
     console.log("response : ");

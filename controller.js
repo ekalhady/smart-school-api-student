@@ -74,11 +74,33 @@ exports.readStudent = function (req, res) {
     console.log("body sent : ");
     console.log(req.body);
 
-    var condition = "";
+    var condition = "", total = "";
 
     if (req.body.idStudent != null || req.body.idStudent != undefined) {
         condition = " AND id_siswa = " + req.body.idStudent;
     }
+
+    //Ganti Query disini dan sesuaikan parameter dengan values yang akan di hitung totalnya
+    var sqlTotal = `SELECT COUNT(id_siswa) AS total FROM siswa;`
+    connection.query(sqlTotal, function (error, result, fields) {
+        if (error) {
+            status_code = "500"
+            messages = "Internal server error";
+            elapseTime = perf.stop();
+            time = elapseTime.time.toFixed(2);
+            response.error(status_code, time, messages, error, res);
+        } else {
+            result.forEach(element => {
+                total = element.total;
+            })
+        }
+    });
+
+    // console.log("+++++++++++++++++++++++++++++++++++++++++++++++++++++");
+    // console.log(sqlTotal);
+    // console.log("+++++++++++++++++++++++++++++++++++++++++++++++++++++");
+
+    //Ganti Query disini dan sesuaikan parameter dengan values yang akan di select datanya
     var page = req.body.page * req.body.limit - req.body.limit;
     var sql = `SELECT 
         id_siswa,
@@ -118,7 +140,7 @@ exports.readStudent = function (req, res) {
             messages = "Success";
             elapseTime = perf.stop();
             time = elapseTime.time.toFixed(2);
-            response.successGet(status_code, time, messages, result, res);
+            response.successGet(status_code, time, messages, total, result, res);
         }
     });
 };
