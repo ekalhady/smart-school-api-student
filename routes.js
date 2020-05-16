@@ -10,7 +10,7 @@ module.exports = function (app) {
 
     //Tambahkan list endpoint API disini
     app.route('/services/create-student').post(control.createStudent);
-    app.route('/services/read-student').get(control.readStudent);
+    app.route('/services/read-student').post(control.readStudent);
     app.route('/services/update-student').post(control.updateStudent);
     app.route('/services/delete-student').post(control.deleteStudent);
 };
