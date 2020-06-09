@@ -13,4 +13,5 @@ module.exports = function (app) {
     app.route('/services/read-student').post(control.readStudent);
     app.route('/services/update-student').post(control.updateStudent);
     app.route('/services/delete-student').post(control.deleteStudent);
+    app.route('/services/login').post(control.login);
 };

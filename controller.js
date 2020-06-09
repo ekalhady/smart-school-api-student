@@ -233,3 +233,17 @@ exports.deleteStudent = function (req, res) {
         }
     });
 };
+
+exports.login = function (req, res) {
+    perf.start();
+    console.log(dateFormat(dt.now(), "dd mmmm yyyy HH:MM:ss"));
+    console.log("api-name : /services/create-student"); // Ganti Endpoint API disini
+    console.log("body sent : ");
+    console.log(req.body);
+
+    status_code = "200";
+    messages = "Success";
+    elapseTime = perf.stop();
+    time = elapseTime.time.toFixed(2);
+    response.successPost(status_code, time, messages, res);
+};
