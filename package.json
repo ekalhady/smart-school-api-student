@@ -13,7 +13,7 @@
     "cors": "^2.8.5",
     "dateformat": "^3.0.3",
     "execution-time": "^1.4.1",
-    "express": "^4.17.1",
+    "express": "^4.17.3",
     "mysql": "^2.18.1",
     "node-datetime": "^2.1.2"
   }
